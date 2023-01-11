@@ -1,0 +1,7 @@
+SECRET_KEY = "abcdefg123456asd123daqqSDDA234as"
+
+SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+FLASK_ENV = "development"
+FLASK_DEBUG = True
