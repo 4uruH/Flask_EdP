@@ -14,7 +14,7 @@ def create_app() -> Flask:
     register_commands(app)
     db.init_app(app)
     login_manager.init_app(app)
-    migrate = Migrate(app, db)
+    migrate = Migrate(app, db, render_as_batch=True)
 
     return app
 
