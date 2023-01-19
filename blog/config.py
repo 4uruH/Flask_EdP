@@ -13,3 +13,5 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 ENV = os.getenv('FLASK_ENV', default=EnvType.production)
 DEBUG = ENV == EnvType.development
+
+WTF_CSRF_ENABLED = True

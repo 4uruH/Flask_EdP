@@ -1,20 +1,18 @@
-from flask import Flask, render_template
-from flask_migrate import Migrate
+from flask import Flask
 
-from blog import commands
+from blog.commands import create_admin
+from blog.models import User
+from blog.security import flask_bcrypt
+from blog.extensions import db, login_manager, migrate, csrf
 
 
 def create_app() -> Flask:
-    from blog.models.database import db
-    from blog.auth.views import login_manager
-
     app = Flask(__name__)
     app.config.from_object('blog.config')
+    flask_bcrypt.init_app(app)
     register_blueprints(app)
     register_commands(app)
-    db.init_app(app)
-    login_manager.init_app(app)
-    migrate = Migrate(app, db, render_as_batch=True)
+    register_extensions(app)
 
     return app
 
@@ -32,5 +30,17 @@ def register_blueprints(app: Flask):
 
 
 def register_commands(app: Flask):
-    app.cli.add_command(commands.create_users)
-    app.cli.add_command(commands.init_db)
+    app.cli.add_command(create_admin)
+
+
+def register_extensions(app):
+    db.init_app(app)
+    migrate.init_app(app, db, compare_type=True)
+    csrf.init_app(app)
+
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
