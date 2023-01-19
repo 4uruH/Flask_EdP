@@ -1,6 +1,9 @@
-import click
+import os
 
-from blog.models.database import db
+import click
+from werkzeug.security import generate_password_hash
+
+from blog.extensions import db
 
 
 @click.command("create-users")
@@ -19,12 +22,19 @@ def create_users():
     print("done! created users:", admin, james)
 
 
-@click.command('init-db')
-def init_db():
+@click.command('create-admin')
+def create_admin():
+    from blog.models.user import User
     from wsgi import app
 
-    # import models for creating tables
-    from blog.models import User
     with app.app_context():
-        db.create_all(app=app)
+        db.session.add(
+            User(username="admin1", is_staff=True, email='name1@example.com', password=('test123'))
+        )
+        db.session.commit()
+
+    print("admin created")
+
+
+
 

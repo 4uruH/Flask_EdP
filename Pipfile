@@ -12,6 +12,12 @@ click = "*"
 light-sql3 = "*"
 sqlite3database = "*"
 flask-login = "==0.5.0"
+django = "*"
+python-dotenv = "*"
+bcrypt-flask = "*"
+wtforms = "*"
+email-validator = "*"
+flask-wtf = "*"
 
 [dev-packages]
 
