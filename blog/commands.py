@@ -1,7 +1,5 @@
-import os
 
 import click
-from werkzeug.security import generate_password_hash
 
 from blog.extensions import db
 
@@ -29,12 +27,25 @@ def create_admin():
 
     with app.app_context():
         db.session.add(
-            User(username="admin1", is_staff=True, email='name1@example.com', password=('test123'))
+            User(username="admin1123", is_staff=True, email='name1123@example.com', password=('test123'))
         )
         db.session.commit()
 
     print("admin created")
 
 
+@click.command('create-tags')
+def create_tags():
+    from blog.models import Tag
+    from wsgi import app
+    """
+    Run in your terminal:
+    ➜ flask create-tags
+    """
 
-
+    with app.app_context():
+        tags = ('flask', 'django', 'python', 'gb', 'sqlite')
+        for item in tags:
+            db.session.add(Tag(name=item))
+        db.session.commit()
+    click.echo(f'Created tags: {", ".join(tags)}')

@@ -1,6 +1,6 @@
 from flask import Flask
 
-from blog.commands import create_admin
+from blog.commands import create_admin, create_tags
 from blog.models import User
 from blog.security import flask_bcrypt
 from blog.extensions import db, login_manager, migrate, csrf
@@ -33,6 +33,7 @@ def register_blueprints(app: Flask):
 
 def register_commands(app: Flask):
     app.cli.add_command(create_admin)
+    app.cli.add_command(create_tags)
 
 
 def register_extensions(app):
