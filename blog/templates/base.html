@@ -15,7 +15,7 @@
 
     {# nav bar #}
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-
+        <a class="navbar-brand" href="{{ url_for('homepage.index') }}">Blog</a>
 
         <div class="container-fluid">
 
@@ -32,7 +32,8 @@
                 {% endif %}
             </div>
 
-            <a class="navbar-brand" href="{{ url_for('homepage.index') }}">Blog</a>
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +41,9 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    {% for (endpoint, label) in [('users_app.list', 'Users'), ('articles_app.list', 'Articles')] %}
+                    {% for (endpoint, label) in [('users_app.list', 'Users'),
+                                                 ('authors_app.list', 'Authors'),
+                                                 ('articles_app.list', 'Articles')] %}
                         <a href="{{ url_for(endpoint) }}"
                         class="nav-link {% if request.endpoint == endpoint -%}active{%- endif %}"
                         >

@@ -22,11 +22,13 @@ def register_blueprints(app: Flask):
     from blog.article.views import articles_app
     from blog.homepage.views import homepage
     from blog.auth.views import auth_app
+    from blog.author.views import authors_app
 
     app.register_blueprint(users_app, url_prefix="/users")
     app.register_blueprint(articles_app, url_prefix="/articles")
     app.register_blueprint(homepage, url_prefix="/")
     app.register_blueprint(auth_app, url_prefix="/auth")
+    app.register_blueprint(authors_app, url_prefix="/authors")
 
 
 def register_commands(app: Flask):
@@ -38,7 +40,7 @@ def register_extensions(app):
     migrate.init_app(app, db, compare_type=True)
     csrf.init_app(app)
 
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = 'auth_app.login'
     login_manager.init_app(app)
 
     @login_manager.user_loader
