@@ -15,3 +15,5 @@ ENV = os.getenv('FLASK_ENV', default=EnvType.production)
 DEBUG = ENV == EnvType.development
 
 WTF_CSRF_ENABLED = True
+
+FLASK_ADMIN_SWATCH = 'cosmo'
