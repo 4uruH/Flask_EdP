@@ -4,20 +4,25 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
-werkzeug = "~=2.0.0"
-click = "*"
+flask-migrate = "3.0.0"
+werkzeug = "~=0.16.1"
+click = "7.1.2"
 light-sql3 = "*"
 sqlite3database = "*"
 flask-login = "==0.5.0"
 django = "*"
-python-dotenv = "*"
+python-dotenv = "0.17.1"
 bcrypt-flask = "*"
 wtforms = "*"
-email-validator = "*"
-flask-wtf = "*"
+email-validator = "1.1.2"
+flask-wtf = "0.15.1"
+sqlalchemy = "==1.4.6"
+pip = "*"
+install = "*"
+flask-sqlalchemy = "2.5.1"
+markupsafe = "==2.0.1"
+flask-admin = "==1.5.8"
+flask = "==1.1.4"
 
 [dev-packages]
 
