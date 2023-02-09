@@ -23,6 +23,10 @@ flask-sqlalchemy = "2.5.1"
 markupsafe = "==2.0.1"
 flask-admin = "==1.5.8"
 flask = "==1.1.4"
+flask-combo-jsonapi = "*"
+combojsonapi = "==1.0.5"
+apispec = "==2.0.2"
+pyyaml = "==5.3.1"
 
 [dev-packages]
 
