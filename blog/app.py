@@ -1,3 +1,5 @@
+from combojsonapi.event import EventPlugin
+from combojsonapi.permission import PermissionPlugin
 from combojsonapi.spec import ApiSpecPlugin
 from flask import Flask
 
@@ -55,6 +57,8 @@ def register_extensions(app):
                 'Article': 'Article API',
             }
         ),
+        EventPlugin(),
+        PermissionPlugin(strict=False),
     ]
     api.init_app(app)
 
